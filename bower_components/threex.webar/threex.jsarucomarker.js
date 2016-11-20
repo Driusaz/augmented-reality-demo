@@ -182,3 +182,5 @@ THREEx.JsArucoMarker = function(){
 		}
 	};
 }
+
+module.exports = THREEx;

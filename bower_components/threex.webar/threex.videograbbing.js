@@ -22,3 +22,5 @@ THREEx.VideoGrabbing = function(){
 	domElement.style.width = '100%'
 	domElement.style.height = '100%'
 }
+
+module.exports = THREEx;

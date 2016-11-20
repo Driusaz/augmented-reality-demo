@@ -108,3 +108,5 @@ THREEx.WebcamGrabbing = function(){
 
 	this.domElement = domElement
 }
+
+module.exports = THREEx;

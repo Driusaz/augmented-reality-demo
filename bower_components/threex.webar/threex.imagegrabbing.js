@@ -32,3 +32,5 @@ THREEx.ImageGrabbing = function(){
 
 	this.domElement = domElement
 }
+
+module.exports = THREEx;
