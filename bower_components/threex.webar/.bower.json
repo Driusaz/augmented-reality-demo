@@ -1,0 +1,14 @@
+{
+  "name": "threex.webar",
+  "homepage": "https://github.com/jeromeetienne/threex.webar",
+  "_release": "46fc6e1cc7",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "46fc6e1cc7374e16540dab39d50010f9aa584074"
+  },
+  "_source": "https://github.com/jeromeetienne/threex.webar.git",
+  "_target": "*",
+  "_originalSource": "threex.webar",
+  "_direct": true
+}
