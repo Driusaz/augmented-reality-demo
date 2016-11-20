@@ -20,6 +20,7 @@
   "homepage": "https://github.com/Driusaz/augmented-reality-demo#readme",
   "devDependencies": {
     "browserify": "^13.1.1",
+    "three-json-loader": "^1.0.0",
     "watchify": "^3.7.0"
   }
 }

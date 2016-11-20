@@ -1,4 +1,5 @@
-var THREE = require('../bower_components/threex.webar/examples/vendor/three.js/build/three.js');
+var THREE = require('three');
+//var THREE = require('../bower_components/threex.webar/examples/vendor/three.js/build/three.js');
 var Stats = require('../bower_components/threex.webar/examples/vendor/three.js/examples/js/libs/stats.min.js');
 
 var JsArucoMarker = require('../bower_components/threex.webar/threex.jsarucomarker.js').JsArucoMarker;
@@ -87,6 +88,16 @@ var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.01, 1000);
 camera.position.z = 2;
 
+// LIGHTS       
+				var ambient = new THREE.AmbientLight( 0x444444 );
+				scene.add( ambient );
+				var light = new THREE.SpotLight( 0xffffff, 1, 0, Math.PI / 2 );
+				light.position.set( 0, 1500, 1000 );
+				light.target.position.set( 0, 0, 0 );
+				light.castShadow = true;
+
+				scene.add( light );
+
 //////////////////////////////////////////////////////////////////////////////////
 //		create a markerObject3D
 //////////////////////////////////////////////////////////////////////////////////
@@ -105,15 +116,44 @@ scene.add(markerObject3D);
     markerObject3D.add(mesh);
 })();
 
-// add a awesome logo to the scene
+var mixer = new THREE.AnimationMixer( scene );
+var morphs = [];
+
+// add a object to the scene
 (function () {
-    var material = new THREE.SpriteMaterial({
-        map: THREE.ImageUtils.loadTexture('images/awesome.png'),
-    });
-    var geometry = new THREE.BoxGeometry(1, 1, 1)
-    var object3d = new THREE.Sprite(material);
-    object3d.scale.set(2, 2, 1);
-    markerObject3D.add(object3d)
+//    var material = new THREE.SpriteMaterial({
+//        map: THREE.ImageUtils.loadTexture('images/awesome.png'),
+//    });
+//    var geometry = new THREE.BoxGeometry(1, 1, 1)
+//    var object3d = new THREE.Sprite(material);
+        
+        var loader = new THREE.JSONLoader();
+        loader.load("model/flamingo.js", function (geometry) {
+            var material = new THREE.MeshLambertMaterial({
+                color: 0xffaa55,
+                morphTargets: true,
+                vertexColors: THREE.FaceColors
+            });
+            material.color.offsetHSL(0, Math.random() * 0.5 - 0.25, Math.random() * 0.5 - 0.25);
+
+            var mesh = new THREE.Mesh( geometry, material );
+            mesh.speed = 550;
+            var duration = 1;
+            var clip = geometry.animations[ 0 ];
+            mixer.clipAction( clip, mesh ).
+                    setDuration( duration ).
+                    // to shift the playback out of phase:
+                    startAt( - duration * Math.random() ).
+                    play();
+            
+            mesh.position.set(0, 0, 1);
+            mesh.rotation.y = Math.PI / 2;
+            mesh.rotation.x = Math.PI / 2;
+            mesh.scale.set(0.01, 0.01, 0.01);
+
+            markerObject3D.add(mesh);
+            morphs.push( mesh );
+        });
 })();
 
 //////////////////////////////////////////////////////////////////////////////////
@@ -127,11 +167,20 @@ window.addEventListener('resize', function () {
     camera.updateProjectionMatrix()
 }, false);
 
+var clock = new THREE.Clock();
 
 // render the scene
 onRenderFcts.push(function () {
     renderStats.begin();
     if (webglRenderEnabled === true) {
+        
+        var delta = clock.getDelta();
+				mixer.update( delta );
+				for ( var i = 0; i < morphs.length; i ++ ) {
+					morph = morphs[ i ];
+					morph.position.x += 0;					
+				}
+        
         renderer.render(scene, camera);
     }
     renderStats.end();
