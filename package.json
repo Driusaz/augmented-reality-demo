@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build-js": "browserify scripts/main.js > site-scripts.js -dv",
-    "watch-js": "watchify scripts/main.js -o site-scripts.js"
+    "watch-js": "watchify scripts/main.js -o site-scripts.js -dv"
   },
   "repository": {
     "type": "git",

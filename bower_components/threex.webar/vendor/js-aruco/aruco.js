@@ -1,3 +1,5 @@
+var CV = require('./cv.js');
+
 /*
 Copyright (c) 2011 Juan Mellado
 
@@ -265,3 +267,5 @@ AR.Detector.prototype.rotate2 = function(src, rotation){
 
   return dst;
 };
+
+module.exports = AR;

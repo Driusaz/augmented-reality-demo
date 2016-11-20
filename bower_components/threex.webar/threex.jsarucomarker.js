@@ -1,3 +1,6 @@
+var AR = require('./vendor/js-aruco/aruco.js');
+var POS = require('./vendor/js-aruco/posit1-patched.js');
+
 var THREEx = THREEx || {}
 
 /**

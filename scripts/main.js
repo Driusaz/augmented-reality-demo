@@ -6,8 +6,6 @@ var ImageGrabbing = require('../bower_components/threex.webar/threex.imagegrabbi
 var WebcamGrabbing = require('../bower_components/threex.webar/threex.webcamgrabbing.js').WebcamGrabbing;
 var VideoGrabbing = require('../bower_components/threex.webar/threex.videograbbing.js').VideoGrabbing;
 
-
-
 var THREEx = {
     JsArucoMarker: JsArucoMarker,
     ImageGrabbing: ImageGrabbing,
@@ -15,11 +13,10 @@ var THREEx = {
     VideoGrabbing: VideoGrabbing
 };
 
-//var THREEx.ImageGrabbing = require('../bower_components/threex.webar/threex.imagegrabbing.js');
-//var THREEx.JsArucoMarker = require('../bower_components/threex.webar/threex.jsarucomarker.js');
-//var THREEx.JsArucoMarker = require('../bower_components/threex.webar/threex.jsarucomarker.js');
-//    <!-- include js-aruco -->
-//    <script src='../vendor/js-aruco/svd.js'></script>
+//var SVD = require('../bower_components/threex.webar/vendor/js-aruco/svd.js');
+//var SVD = require('../bower_components/threex.webar/vendor/js-aruco/posit1-patched.js');
+//var SVD = require('../bower_components/threex.webar/vendor/js-aruco/cv.js');
+
 //    <script src='../vendor/js-aruco/posit1-patched.js'></script>
 //    <script src='../vendor/js-aruco/cv.js'></script>
 //    <script src='../vendor/js-aruco/aruco.js'></script>
